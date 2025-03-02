@@ -51,7 +51,7 @@ services:
     depends_on:
       elasticsearch:
         condition: service_healthy
-    mem_limit: 768m
+    mem_limit: 800m
     ports:
       - "5601:5601"
     networks:
