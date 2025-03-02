@@ -17,9 +17,9 @@ services:
       - grpc_network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health"]
-      interval: 10s
+      interval: 20s
       timeout: 5s
-      retries: 5
+      retries: 10
 
   logstash:
     image: logstash:8.17.2
