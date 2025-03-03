@@ -8,6 +8,7 @@ services:
       - "ES_JAVA_OPTS=-Xms384m -Xmx384m"
       - "xpack.security.enabled=false"
     mem_limit: 768m
+    restart: unless-stopped
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -25,8 +26,9 @@ services:
     image: logstash:8.17.2
     container_name: logstash
     environment:
-      - "LS_JAVA_OPTS=-Xms192m -Xmx192m"
-    mem_limit: 384m
+      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
+    mem_limit: 512m
+    restart: unless-stopped
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
@@ -52,6 +54,7 @@ services:
       elasticsearch:
         condition: service_healthy
     mem_limit: 800m
+    restart: unless-stopped
     ports:
       - "5601:5601"
     networks:
